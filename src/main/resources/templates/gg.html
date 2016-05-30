@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <script type="text/javascript">
+
+    	var connection;
+    
+        function connect() {
+        	connection = new WebSocket('ws://localhost:8080/myHandler');
+        	console.log('ctor');
+        	
+        	// When the connection is open, send some data to the server
+        	connection.onopen = function () {
+        		console.log('opening');
+        	  	connection.send('Ping'); // Send the message 'Ping' to the server
+        	};
+
+        	// Log errors
+        	connection.onerror = function (error) {
+        	  console.log('WebSocket Error ' + error);
+        	};
+
+        	// Log messages from the server
+        	connection.onmessage = function (e) {
+        	  console.log('Server: ' + e.data);
+        	  connection.close();
+        	};
+        	
+        	connection.onclose = function () {
+        		console.log('bye');
+        	};
+        }
+
+        
+        
+        function disconnect() {
+
+        }
+
+    </script>
+</head>
+<body>
+
+<div>
+    <div>
+        <button id="connect" onclick="connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+</div>
+</body>
+</html>

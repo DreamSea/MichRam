@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<canvas id="canvasSandbox" width="200" height="200" style="border:1px solid #000000;"></canvas>
+</body>
+<script>
+	var data =	{
+					"board":[
+	                          {"index":0, "xCoord":0, "yCoord":0},
+	                          {"index":1, "xCoord":1, "yCoord":0},
+	                          {"index":2, "xCoord":2, "yCoord":0},
+	                          {"index":3, "xCoord":2, "yCoord":1},
+	                          {"index":4, "xCoord":2, "yCoord":2},
+	                          {"index":5, "xCoord":1, "yCoord":2},
+	                          {"index":6, "xCoord":0, "yCoord":2},
+	                          {"index":7, "xCoord":0, "yCoord":1}
+	            	],
+	            	"player1":{"location":4, "name":"p1"},
+	            	"player2":{"location":0, "name":"p2"}
+				};
+	
+	var cvs = document.getElementById("canvasSandbox");
+	var ctx = cvs.getContext("2d");
+	ctx.fillStyle = "#2C3539";
+	ctx.fillRect(10,10,180,180);
+	
+</script>
+</html>
