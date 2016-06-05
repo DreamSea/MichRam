@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Hello WebSocket</title>
-    <script type="text/javascript">
+
+<script th:inline="javascript">
+/*<![CDATA[*/
 
     	var connection;
     
@@ -24,8 +26,27 @@
     		xhr.send(null);
     	}
     	
+		function getBoard() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "board", true);
+			xhr.onload = function(e) {
+				if (xhr.readyState === 4) {
+					if (xhr.status === 200) {
+						board = JSON.parse(xhr.responseText);
+						console.log(xhr.responseText);
+					} else {
+						console.error(xhr.statusText);
+					}
+				}
+			};
+			xhr.onerror = function(e) {
+				console.error(xhr.statusText);
+			};
+			xhr.send(null);
+		}
+    	
         function connect() {
-        	connection = new WebSocket('ws://192.168.1.13:8080/updates');
+        	connection = new WebSocket('ws://'+[[${ip}]]+'/updates');
         	
         	// When the connection is open, send some data to the server
         	connection.onopen = function () {
@@ -59,6 +80,7 @@
         	connect();
         }
 
+        /*]]>*/
     </script>
 </head>
 <body>

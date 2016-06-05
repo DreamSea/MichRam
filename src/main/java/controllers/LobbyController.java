@@ -28,6 +28,7 @@ public class LobbyController {
     		@RequestParam String playerName, 
     		@RequestParam int index) {
     	System.out.println("(LobbyController) hi: "+request.getSession().getId());
+    	if (playerName.equals("")) playerName = "anon"+request.getSession().getId().substring(0, 2);
     	Lobby.joinQueue(index, new Player(playerName, request.getSession().getId()));
     	model.addAttribute("queue", Lobby.getQueue(index));
         return "queue";

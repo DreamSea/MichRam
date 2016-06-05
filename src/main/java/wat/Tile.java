@@ -23,4 +23,8 @@ public class Tile {
 	public void setyCoord(double yCoord) {
 		this.yCoord = yCoord;
 	}
+	public void addNextTiles(Tile tile) {
+		// TODO Auto-generated method stub
+		
+	}
 }

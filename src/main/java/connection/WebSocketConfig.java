@@ -12,10 +12,12 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
+	public static final String THIS_LOCAL_IP = "192.168.1.13:8080";
+	
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(myHandler(), "/myHandler").addInterceptors(new HttpSessionHandshakeInterceptor()).setAllowedOrigins("http://localhost");
-        registry.addHandler(updateHandler(), "/updates").addInterceptors(new HttpSessionHandshakeInterceptor()).setAllowedOrigins("http://192.168.1.11:8080/socketTest");
+        registry.addHandler(updateHandler(), "/updates").addInterceptors(new HttpSessionHandshakeInterceptor()).setAllowedOrigins("http://"+THIS_LOCAL_IP);
     }
 
     @Bean
