@@ -1,4 +1,4 @@
-package hmm;
+package connection;
 import java.io.IOException;
 
 import org.springframework.web.socket.CloseStatus;

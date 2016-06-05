@@ -1,4 +1,4 @@
-package hmm;
+package controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SandboxController {
 
-    @RequestMapping("/")
+    @RequestMapping("/sandbox")
     public String getCanvasHTML(HttpServletRequest request) {
     	System.out.println("hi: "+request.getSession().getId());
         return "sandbox";

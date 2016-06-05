@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lobby</title>
+</head>
+<body>
+	<section>
+		<h1>Queues</h1>
+		<article th:each = "queue,iterStat : ${queues}">
+			<p th:text = "${queue.numPlayers}+'/'+${queue.maxPlayers}" />
+			<form method="post" action="join">
+				<input type="hidden" name="index" th:value ="${iterStat.index}" />
+				<input type="text" name="playerName" />
+				<button name="button">Join</button>
+			</form>
+		</article>
+	</section>
+	<section>
+		<h2>Games</h2>
+		<article th:each = "game : ${games}">
+			<p th:text = "${game}" />
+		</article>
+	</section>
+</body>
+<script>
+		
+</script>
+</html>

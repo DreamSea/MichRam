@@ -22,10 +22,29 @@
 	            	"player2":{"location":0, "name":"p2"}
 				};
 	
+
 	var cvs = document.getElementById("canvasSandbox");
 	var ctx = cvs.getContext("2d");
 	ctx.fillStyle = "#2C3539";
-	ctx.fillRect(10,10,180,180);
+	ctx.fillRect(10, 10, 180, 180);
+
+	var board;
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "board", true);
+	xhr.onload = function(e) {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200) {
+				board = JSON.parse(xhr.responseText);
+				console.log(xhr.responseText);
+			} else {
+				console.error(xhr.statusText);
+			}
+		}
+	};
+	xhr.onerror = function(e) {
+		console.error(xhr.statusText);
+	};
+	xhr.send(null);
 	
 </script>
 </html>

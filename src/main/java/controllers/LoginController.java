@@ -1,4 +1,4 @@
-package hmm;
+package controllers;
 
 import javax.servlet.http.HttpServletRequest;
 

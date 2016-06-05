@@ -6,9 +6,26 @@
 
     	var connection;
     
+    	function rollDice() {
+    		var xhr = new XMLHttpRequest();
+    		xhr.open("GET", "rollDice", true);
+    		xhr.onload = function(e) {
+    			if (xhr.readyState === 4) {
+    				if (xhr.status === 200) {
+    					console.log(xhr.responseText);
+    				} else {
+    					console.error(xhr.statusText);
+    				}
+    			}
+    		};
+    		xhr.onerror = function(e) {
+    			console.error(xhr.statusText);
+    		};
+    		xhr.send(null);
+    	}
+    	
         function connect() {
-        	connection = new WebSocket('ws://localhost:8080/myHandler');
-        	console.log('ctor');
+        	connection = new WebSocket('ws://192.168.1.11:8080/updates');
         	
         	// When the connection is open, send some data to the server
         	connection.onopen = function () {
@@ -23,19 +40,23 @@
 
         	// Log messages from the server
         	connection.onmessage = function (e) {
-        	  console.log('Server: ' + e.data);
-        	  connection.close();
+        		var oldText = document.getElementById("connectionLog").innerHTML;
+				var newText = "<p>"+e.data+"</p>"+oldText;
+        		document.getElementById("connectionLog").innerHTML = newText;
+        		console.log('Server: ' + e.data);
         	};
         	
         	connection.onclose = function () {
         		console.log('bye');
         	};
-        }
-
-        
+        }  
         
         function disconnect() {
-
+			connection.close();
+        }
+        
+        window.onload = function() {
+        	connect();
         }
 
     </script>
@@ -43,10 +64,9 @@
 <body>
 
 <div>
-    <div>
-        <button id="connect" onclick="connect();">Connect</button>
-        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
-    </div>
+    <button id="disconnect" onclick="disconnect();">Disconnect</button>
+    <button id="rollDice" onclick="rollDice();">Dice!</button>
 </div>
+<div id="connectionLog" style="overflow-y:scroll; height:500px;"></div>
 </body>
 </html>
