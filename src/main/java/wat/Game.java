@@ -1,7 +1,6 @@
 package wat;
 
 import java.util.List;
-import java.util.Random;
 
 public class Game {
 
@@ -9,90 +8,88 @@ public class Game {
 	private int currentPlayer;
 	private Board board;
 
-	private static Random r = new Random();
-
 	private void initBoard() {
 		board = new Board();
 		Tile[] tiles = new Tile[79];
-		tiles[0] = makeTile(0, 8);
-		tiles[1] = makeTile(1, 7);
-		tiles[2] = makeTile(2, 6);
-		tiles[3] = makeTile(3, 6);
-		tiles[4] = makeTile(4, 6);
-		tiles[5] = makeTile(3, 5);
-		tiles[6] = makeTile(2, 4);
-		tiles[7] = makeTile(1, 4);
-		tiles[8] = makeTile(2, 3);
-		tiles[9] = makeTile(3, 3);
-		tiles[10] = makeTile(4, 3);
-		tiles[11] = makeTile(5, 3);
-		tiles[12] = makeTile(6, 4);
-		tiles[13] = makeTile(7, 4);
-		tiles[14] = makeTile(7, 3);
-		tiles[15] = makeTile(7, 2);
-		tiles[16] = makeTile(7, 1);
-		tiles[17] = makeTile(8, 0);
-		tiles[18] = makeTile(9, 0);
-		tiles[19] = makeTile(10, 1);
-		tiles[20] = makeTile(8, 3);
-		tiles[21] = makeTile(9, 3);
-		tiles[22] = makeTile(10, 3);
-		tiles[23] = makeTile(10, 2);
-		tiles[24] = makeTile(11, 2);
-		tiles[25] = makeTile(12, 2);
-		tiles[26] = makeTile(13, 1);
-		tiles[27] = makeTile(13, 2);
-		tiles[28] = makeTile(14, 3);
-		tiles[29] = makeTile(14, 4);
-		tiles[30] = makeTile(13, 4);
-		tiles[31] = makeTile(12, 4);
-		tiles[32] = makeTile(11, 5);
-		tiles[33] = makeTile(10, 5);
-		tiles[34] = makeTile(9, 6);
-		tiles[35] = makeTile(8, 7);
-		tiles[36] = makeTile(8, 8);
-		tiles[37] = makeTile(7, 8);
-		tiles[38] = makeTile(7, 9);
-		tiles[39] = makeTile(7, 10);
-		tiles[40] = makeTile(6, 11);
-		tiles[41] = makeTile(6, 8);
-		tiles[42] = makeTile(5, 9);
-		tiles[43] = makeTile(5, 10);
-		tiles[44] = makeTile(5, 11);
-		tiles[45] = makeTile(4, 11);
-		tiles[46] = makeTile(3, 12);
-		tiles[47] = makeTile(3, 13);
-		tiles[48] = makeTile(2, 13);
-		tiles[49] = makeTile(2, 12);
-		tiles[50] = makeTile(2, 11);
-		tiles[51] = makeTile(1, 10);
-		tiles[52] = makeTile(1, 9);
-		tiles[53] = makeTile(9, 7);
-		tiles[54] = makeTile(10, 7);
-		tiles[55] = makeTile(7, 11);
-		tiles[56] = makeTile(8, 11);
-		tiles[57] = makeTile(8, 12);
-		tiles[58] = makeTile(10, 8);
-		tiles[59] = makeTile(11, 8);
-		tiles[60] = makeTile(12, 8);
-		tiles[61] = makeTile(13, 7);
-		tiles[62] = makeTile(13, 8);
-		tiles[63] = makeTile(13, 9);
-		tiles[64] = makeTile(13, 10);
-		tiles[65] = makeTile(13, 11);
-		tiles[66] = makeTile(13, 12);
-		tiles[67] = makeTile(12, 12);
-		tiles[68] = makeTile(11, 12);
-		tiles[69] = makeTile(10, 12);
-		tiles[70] = makeTile(9, 12);
-		tiles[71] = makeTile(9, 11);
-		tiles[72] = makeTile(9, 10);
-		tiles[73] = makeTile(12, 9);
-		tiles[74] = makeTile(11, 10);
-		tiles[75] = makeTile(11, 11);
-		tiles[76] = makeTile(10, 11);
-		tiles[77] = makeTile(10, 10);
-		tiles[78] = makeTile(10, 9);
+		tiles[0] = makeTile(0, 0, 8);
+		tiles[1] = makeTile(1, 1, 7);
+		tiles[2] = makeTile(2, 2, 6);
+		tiles[3] = makeTile(3, 3, 6);
+		tiles[4] = makeTile(4, 4, 6);
+		tiles[5] = makeTile(5, 3, 5);
+		tiles[6] = makeTile(6, 2, 4);
+		tiles[7] = makeTile(7, 1, 4);
+		tiles[8] = makeTile(8, 2, 3);
+		tiles[9] = makeTile(9, 3, 3);
+		tiles[10] = makeTile(10, 4, 3);
+		tiles[11] = makeTile(11, 5, 3);
+		tiles[12] = makeTile(12, 6, 4);
+		tiles[13] = makeTile(13, 7, 4);
+		tiles[14] = makeTile(14, 7, 3);
+		tiles[15] = makeTile(15, 7, 2);
+		tiles[16] = makeTile(16, 7, 1);
+		tiles[17] = makeTile(17, 8, 0);
+		tiles[18] = makeTile(18, 9, 0);
+		tiles[19] = makeTile(19, 10, 1);
+		tiles[20] = makeTile(20, 8, 3);
+		tiles[21] = makeTile(21, 9, 3);
+		tiles[22] = makeTile(22, 10, 3);
+		tiles[23] = makeTile(23, 10, 2);
+		tiles[24] = makeTile(24, 11, 2);
+		tiles[25] = makeTile(25, 12, 2);
+		tiles[26] = makeTile(26, 13, 1);
+		tiles[27] = makeTile(27, 13, 2);
+		tiles[28] = makeTile(28, 14, 3);
+		tiles[29] = makeTile(29, 14, 4);
+		tiles[30] = makeTile(30, 13, 4);
+		tiles[31] = makeTile(31, 12, 4);
+		tiles[32] = makeTile(32, 11, 5);
+		tiles[33] = makeTile(33, 10, 5);
+		tiles[34] = makeTile(34, 9, 6);
+		tiles[35] = makeTile(35, 8, 7);
+		tiles[36] = makeTile(36, 8, 8);
+		tiles[37] = makeTile(37, 7, 8);
+		tiles[38] = makeTile(38, 7, 9);
+		tiles[39] = makeTile(39, 7, 10);
+		tiles[40] = makeTile(40, 6, 11);
+		tiles[41] = makeTile(41, 6, 8);
+		tiles[42] = makeTile(42, 5, 9);
+		tiles[43] = makeTile(43, 5, 10);
+		tiles[44] = makeTile(44, 5, 11);
+		tiles[45] = makeTile(45, 4, 11);
+		tiles[46] = makeTile(46, 3, 12);
+		tiles[47] = makeTile(47, 3, 13);
+		tiles[48] = makeTile(48, 2, 13);
+		tiles[49] = makeTile(49, 2, 12);
+		tiles[50] = makeTile(50, 2, 11);
+		tiles[51] = makeTile(51, 1, 10);
+		tiles[52] = makeTile(52, 1, 9);
+		tiles[53] = makeTile(53, 9, 7);
+		tiles[54] = makeTile(54, 10, 7);
+		tiles[55] = makeTile(55, 7, 11);
+		tiles[56] = makeTile(56, 8, 11);
+		tiles[57] = makeTile(57, 8, 12);
+		tiles[58] = makeTile(58, 10, 8);
+		tiles[59] = makeTile(59, 11, 8);
+		tiles[60] = makeTile(60, 12, 8);
+		tiles[61] = makeTile(61, 13, 7);
+		tiles[62] = makeTile(62, 13, 8);
+		tiles[63] = makeTile(63, 13, 9);
+		tiles[64] = makeTile(64, 13, 10);
+		tiles[65] = makeTile(65, 13, 11);
+		tiles[66] = makeTile(66, 13, 12);
+		tiles[67] = makeTile(67, 12, 12);
+		tiles[68] = makeTile(68, 11, 12);
+		tiles[69] = makeTile(69, 10, 12);
+		tiles[70] = makeTile(70, 9, 12);
+		tiles[71] = makeTile(71, 9, 11);
+		tiles[72] = makeTile(72, 9, 10);
+		tiles[73] = makeTile(73, 12, 9);
+		tiles[74] = makeTile(74, 11, 10);
+		tiles[75] = makeTile(75, 11, 11);
+		tiles[76] = makeTile(76, 10, 11);
+		tiles[77] = makeTile(77, 10, 10);
+		tiles[78] = makeTile(78, 10, 9);
 
 		tiles[0].addNextTiles(tiles[1]);
 		tiles[1].addNextTiles(tiles[2]);
@@ -182,8 +179,9 @@ public class Game {
 		board.setTiles(tiles);
 	}
 
-	private Tile makeTile(double xCoord, double yCoord) {
+	private Tile makeTile(int index, double xCoord, double yCoord) {
 		Tile toReturn = new Tile();
+		toReturn.setIndex(index);
 		toReturn.setxCoord(xCoord);
 		toReturn.setyCoord(yCoord);
 		return toReturn;
@@ -193,6 +191,9 @@ public class Game {
 		initBoard();
 		currentPlayer = 0;
 		this.players = players;
+		for (Player p : this.players) {
+			p.setLocation(board.getTiles()[0]);
+		}
 	}
 
 	public Player getCurrentPlayer() {
@@ -200,7 +201,12 @@ public class Game {
 	}
 
 	public int doRoll() {
-		int roll = r.nextInt(6) + 1;
+		int roll = Dice.rollDice(2, 6);
+		Tile currentLocation = players.get(currentPlayer).getLocation();
+		for (int i = 0; i < roll; i++) {
+			currentLocation = currentLocation.getNextTiles().get(0);
+		}
+		players.get(currentPlayer).setLocation(currentLocation);
 		currentPlayer = (currentPlayer + 1) % players.size();
 		return roll;
 	}

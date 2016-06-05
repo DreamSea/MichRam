@@ -1,9 +1,13 @@
 package wat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tile {
 	private int index;
 	private double xCoord;
 	private double yCoord;
+	private List<Tile> nextTiles = new ArrayList<>();
 	
 	public int getIndex() {
 		return index;
@@ -23,8 +27,11 @@ public class Tile {
 	public void setyCoord(double yCoord) {
 		this.yCoord = yCoord;
 	}
+	public List<Tile> getNextTiles() {
+		return nextTiles;
+	}
+	
 	public void addNextTiles(Tile tile) {
-		// TODO Auto-generated method stub
-		
+		nextTiles.add(tile);
 	}
 }

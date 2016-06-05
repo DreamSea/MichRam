@@ -10,6 +10,7 @@ import connection.UpdateType;
 import wat.Board;
 import wat.Game;
 import wat.Lobby;
+import wat.Player;
 
 @RestController
 public class GamestateController {
@@ -23,9 +24,9 @@ public class GamestateController {
     public void rollDice(HttpServletRequest request) {
     	Game game = Lobby.getGames().get(0);
     	if (game.getCurrentPlayer().getHttpSessionId().equals(request.getSession().getId())) {
-    		String currentPlayerName = game.getCurrentPlayer().getName();
+    		Player currentPlayer = game.getCurrentPlayer();
     		int roll = game.doRoll();
-    		ConnectionManager.sendToAllListeners(UpdateType.DICE_ROLLED, currentPlayerName+" rolled "+roll);
+    		ConnectionManager.sendToAllListeners(UpdateType.DICE_ROLLED, currentPlayer.getName()+" rolling 2d6 = "+roll+", location = "+currentPlayer.getLocation().getIndex());
     	}
     }
 }

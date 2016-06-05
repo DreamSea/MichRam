@@ -3,6 +3,7 @@ package wat;
 public class Player {
 	private String name;
 	private String httpSessionId;
+	private Tile location;
 	
 	public Player(String name, String httpSessionId) {
 		setName(name);
@@ -21,4 +22,13 @@ public class Player {
 	public void setHttpSessionId(String httpSessionId) {
 		this.httpSessionId = httpSessionId;
 	}
+
+	public Tile getLocation() {
+		return location;
+	}
+
+	public void setLocation(Tile location) {
+		this.location = location;
+	}
+	
 }
