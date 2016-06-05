@@ -31,9 +31,15 @@ public class GameQueue {
 				return;
 			}
 		}
-		playerList.add(player);
+		if (playerList.size() < maxPlayers) {
+			playerList.add(player);	
+		}
 		if (playerList.size() == maxPlayers) {
 			Lobby.convertToGame(this);
 		}
+	}
+	
+	public boolean isReady() {
+		return (playerList.size() == maxPlayers);
 	}
 }

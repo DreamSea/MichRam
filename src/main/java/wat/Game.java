@@ -1,11 +1,14 @@
 package wat;
 
 import java.util.List;
+import java.util.Random;
 
 public class Game {
 
 	private List<Player> players;
+	private int currentPlayer;
 	private Board board;
+	private static Random r = new Random();
 	
 	private void initBoard() {
     	board = new Board();
@@ -31,8 +34,21 @@ public class Game {
 	
 	public Game(List<Player> players) {
 		initBoard();
+		currentPlayer = 0;
 		this.players = players;
 	}
 	
+	public Player getCurrentPlayer() {
+		return players.get(currentPlayer);
+	}
 	
+	public int doRoll() {
+		int roll = r.nextInt(6)+1;
+		currentPlayer = (currentPlayer+1)%players.size();
+		return roll;
+	}
+	
+	public Board getBoard() {
+		return board;
+	}
 }

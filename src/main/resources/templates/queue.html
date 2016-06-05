@@ -8,7 +8,11 @@
 		<p th:text = "${queue.numPlayers}+'/'+${queue.maxPlayers}" />
 	</section>
 </body>
-<script>
-		
+<script th:inline="javascript">
+/*<![CDATA[*/
+    if ([[${queue.ready}]]) {
+    	window.location = '/game?index=0';
+    }
+/*]]>*/
 </script>
 </html>
